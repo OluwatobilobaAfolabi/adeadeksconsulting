@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-work-sans), Arial, sans-serif;
+  --color-brand: #ffdc35;
+  --color-navy: #0b1e3f;
+  --color-muted: #7d7d7d;
+  --color-surface: #fafafa;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-white font-sans text-black;
+}
+
+/* 1312px content column inside a 1440px frame (64px side margins on desktop) */
+.container-site {
+  @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16;
+}
+
+/* 96px display heading on desktop, scaling down for tablet/mobile */
+.heading-display {
+  @apply font-serif font-medium text-[clamp(2.5rem,7.5vw,6rem)] leading-[1.3] lg:leading-[1.41];
+}
+
+.heading-card {
+  @apply font-serif font-semibold text-[28px] leading-[1.41] md:text-[40px];
+}
+
+/* Liquid hover: a navy "liquid" (an oversized rotating rounded square) rises from
+   below the button; its uneven edge sweeping across reads as a liquid surface. */
+.btn-yellow {
+  @apply relative isolate inline-flex items-center justify-center gap-2 overflow-hidden bg-brand px-10 py-4 text-base font-medium text-navy;
+  transition: color 0.3s ease 0.15s;
+}
+
+.btn-yellow::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -60%;
+  top: 0;
+  width: 220%;
+  aspect-ratio: 1;
+  background: var(--color-navy);
+  border-radius: 43%;
+  transform: translate3d(0, 16%, 0) rotate(0deg);
+  transition: transform 0.75s cubic-bezier(0.45, 0.05, 0.2, 1);
+}
+
+.btn-yellow:hover {
+  color: #fff;
+}
+
+.btn-yellow:hover::before {
+  transform: translate3d(0, -42%, 0) rotate(150deg);
+}
+
+.btn-yellow img {
+  transition: filter 0.3s ease 0.15s;
+}
+
+.btn-yellow:hover img {
+  filter: brightness(0) invert(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-yellow,
+  .btn-yellow::before,
+  .btn-yellow img {
+    transition: none;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 45s linear infinite;
 }

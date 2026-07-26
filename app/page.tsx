@@ -1,65 +1,244 @@
 import Image from "next/image";
+import SplitRow from "@/components/SplitRow";
+
+const marqueeImages = [
+  "/images/hero-1.jpg",
+  "/images/hero-2.jpg",
+  "/images/hero-3.jpg",
+  "/images/hero-4.jpg",
+  "/images/hero-5.jpg",
+];
+
+const valueCards = [
+  {
+    title: "Our Vision",
+    body: "A world where every product and service can achieve the million impact and create lasting opportunities for people everywhere.",
+    img: "/images/card-lens-1.jpg",
+    border: "border-[#ff6433]",
+    caption: "bg-[#ffd8cc]",
+    stagger: "",
+  },
+  {
+    title: "Our Mission",
+    body: "To achieve this vision, we will unlock pathways that enhance the scalability of products and services with strategies, structures that accelerate impact.",
+    img: "/images/card-lens-2.jpg",
+    border: "border-[#fab9d5]",
+    caption: "bg-[#feecf3]",
+    stagger: "lg:mt-[239px]",
+  },
+  {
+    title: "Our Values",
+    body: "We will abide by a core set of principles guided by faith for the impossible, impact at scale, innovation for heart and partnership for delivery.",
+    img: "/images/card-lens-3.jpg",
+    border: "border-[#ffda00]",
+    caption: "bg-[#fffadb]",
+    stagger: "lg:mt-[477px]",
+  },
+];
+
+const services = [
+  {
+    title: "Consulting Services",
+    body: "Strategy-driven advisory services for growth and scale excellence. International Development, Partnership and Ecosystems, Innovation Management, HR and Capacity Building, Delivery and Implementation, Coaching and Mentoring.",
+    img: "/images/service-consulting.jpg",
+  },
+  {
+    title: "Programme Services",
+    body: "Transformative programmes developing individuals, leaders, entrepreneurs, and organizations. Frontiers for Innovation, Food for Resilience, Foundations for Governance, Financing for Access, Futures for Livelihoods, Facilities for Wellbeing.",
+    img: "/images/service-programme.jpg",
+  },
+  {
+    title: "Solution Services",
+    body: "Innovative solutions designed for lasting impact. Innovate2Scale Lab, Innovate2Scale Toolkit, Innovate2Scale Academy, Innovate2Scale Insights, Innovate2Scale Studio, Innovate2Scale Summit.",
+    img: "/images/service-solution.jpg",
+  },
+];
+
+const initiatives = [
+  {
+    title: "Innovate2Scale Lab",
+    body: "A space where bold solutions scale with an ecosystem lens powered by the innovate2scale platform with a focus on harnessing the digital economy, system innovations and partnerships.",
+    img: "/images/initiative-lab.jpg",
+  },
+  {
+    title: "KirAkira Africa Collective",
+    body: "A suite of solutions around higher education, policy instruments and innovation with focus on children and young people to build a safe and secure future for Africa.",
+    img: "/images/initiative-kirakira.jpg",
+  },
+  {
+    title: "We-Scale",
+    body: "Shapes pathways for improving access to quality jobs, financing and living through inclusive opportunities and economy by harnessing the power of creativity and innovation.",
+    img: "/images/initiative-wescale.jpg",
+  },
+];
+
+const initiativeTags = ["Scaling Bold Solutions", "Scaling the Future", "Scaling Livelihoods"];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* Hero */}
+      <section className="overflow-hidden bg-white pt-16 pb-11 lg:pt-[104px]">
+        <div className="container-site flex flex-col items-start gap-6">
+          <div className="flex flex-col gap-4">
+            <h1 className="heading-display">
+              Scaling Impact <span className="font-serif italic text-muted">Together</span>
+            </h1>
+            <p className="max-w-[644px] text-lg leading-[1.41]">
+              At Ade Adeks Global Consulting, we drive growth from early-stage ideas to
+              large-scale impact. By shaping policies, talent, finance, and markets, we bridge
+              the &quot;missing middle&quot; to help businesses scale and succeed.
+            </p>
+          </div>
+          <a href="#" className="btn-yellow h-14">
+            Check Out Innovate2scale
+            <Image src="/images/icon-link.svg" alt="" width={20} height={20} />
+          </a>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div className="mt-16 overflow-hidden pl-4 sm:pl-8 lg:pl-16">
+          <div className="animate-marquee flex w-max gap-6">
+            {[...marqueeImages, ...marqueeImages].map((src, i) => (
+              <div
+                key={i}
+                className="relative size-[260px] shrink-0 bg-[#d9d9d9] md:size-[340px] xl:size-[421px]"
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 260px, 421px"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation / Vision / Mission / Values */}
+      <section className="bg-white py-16 lg:py-[104px]">
+        <div className="container-site flex flex-col gap-16">
+          <h2 className="heading-display">
+            Innovation.
+            <br />
+            International{" "}
+            <span className="font-serif italic text-muted">Development</span>
+            <span className="text-muted">.</span>
+            <br />
+            Impact <span className="font-serif italic text-muted">Delivery</span>
+            <span className="text-muted">.</span>
+          </h2>
+          <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-6">
+            {valueCards.map((card) => (
+              <div
+                key={card.title}
+                className={`relative aspect-[421/477] w-full max-w-[421px] overflow-hidden border-[12px] ${card.border} ${card.stagger}`}
+              >
+                <Image
+                  src={card.img}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 421px"
+                />
+                <div
+                  className={`absolute inset-x-3 bottom-3 flex flex-col gap-1 px-4 py-3 ${card.caption}`}
+                >
+                  <p className="font-serif text-[22px] font-semibold leading-[1.41]">
+                    {card.title}
+                  </p>
+                  <p className="text-base leading-[1.41]">{card.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Services */}
+      <section id="services" className="bg-surface py-16 lg:py-[104px]">
+        <div className="container-site flex flex-col gap-16">
+          <div className="flex flex-col gap-4">
+            <h2 className="heading-display">Our Services</h2>
+            <p className="max-w-[644px] text-lg leading-[1.41]">
+              We work with businesses, governments, social enterprises, coalition and donors to
+              turn ideas into scalable impact, leveraging our suite of interventions from design
+              studio, strategy formulation, scale leadership, skills development, system
+              strengthening, and strategic collaboratives across our three core practice areas
+              to drive sustainable impact.
+            </p>
+          </div>
+          <div className="flex flex-col gap-16">
+            {services.map((service, i) => (
+              <SplitRow key={service.title} {...service} alt={service.title} reverse={i % 2 === 1} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Voices of Scale */}
+      <section className="bg-white py-16 lg:py-[104px]">
+        <div className="container-site flex flex-col gap-16">
+          <div className="flex flex-col gap-4">
+            <h2 className="heading-display">The Voices of Scale</h2>
+            <p className="max-w-[755px] text-lg leading-[1.41]">
+              &quot;95% of new solutions fail to scale. 95% of development programmes do not
+              succeed beyond pilot. 95% of AI projects do not deliver business value. The
+              question is no longer why innovations fail... it is what it will take to make them
+              succeed in different markets, institutions and ecosystems.&quot;
+              <br />
+              <span className="font-bold">Source: MIT.Devex</span>
+            </p>
+          </div>
+          <div className="relative mx-auto aspect-[1090/630] w-full max-w-[1090px] overflow-hidden bg-black">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/images/voices-video.jpg"
+              alt="The Voices of Scale video"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1200px) 100vw, 1090px"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <button
+              type="button"
+              aria-label="Play video"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform hover:scale-110"
+            >
+              <Image src="/images/icon-play.svg" alt="" width={40} height={40} />
+            </button>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Innovate2Scale Initiatives */}
+      <section className="bg-surface py-16 lg:py-[104px]">
+        <div className="container-site flex flex-col gap-16">
+          <div className="flex flex-col gap-4">
+            <h2 className="heading-display">
+              Innovate2Scale <span className="font-serif italic text-muted">Initiatives</span>
+            </h2>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              {initiativeTags.map((tag, i) => (
+                <span key={tag} className="flex items-center gap-4">
+                  {i > 0 && <span className="size-2 rounded-full bg-black" />}
+                  <span className="font-serif text-xl font-medium leading-[1.41] md:text-2xl">
+                    {tag}
+                  </span>
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-16">
+            {initiatives.map((initiative, i) => (
+              <SplitRow
+                key={initiative.title}
+                {...initiative}
+                alt={initiative.title}
+                reverse={i % 2 === 1}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
