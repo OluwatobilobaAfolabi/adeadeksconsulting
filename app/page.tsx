@@ -1,4 +1,5 @@
 import Image from "next/image";
+import RotatingGlobe from "@/components/RotatingGlobe";
 import SplitRow from "@/components/SplitRow";
 
 const marqueeImages = [
@@ -178,33 +179,22 @@ export default function Home() {
 
       {/* The Voices of Scale */}
       <section className="bg-white py-16 lg:py-[104px]">
-        <div className="container-site flex flex-col gap-16">
-          <div className="flex flex-col gap-4">
-            <h2 className="heading-display">The Voices of Scale</h2>
-            <p className="max-w-[755px] text-lg leading-[1.41]">
-              &quot;95% of new solutions fail to scale. 95% of development programmes do not
-              succeed beyond pilot. 95% of AI projects do not deliver business value. The
-              question is no longer why innovations fail... it is what it will take to make them
-              succeed in different markets, institutions and ecosystems.&quot;
-              <br />
-              <span className="font-bold">Source: MIT.Devex</span>
-            </p>
-          </div>
-          <div className="relative mx-auto aspect-[1090/630] w-full max-w-[1090px] overflow-hidden bg-black">
-            <Image
-              src="/images/voices-video.jpg"
-              alt="The Voices of Scale video"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1200px) 100vw, 1090px"
-            />
-            <button
-              type="button"
-              aria-label="Play video"
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform hover:scale-110"
-            >
-              <Image src="/images/icon-play.svg" alt="" width={40} height={40} />
-            </button>
+        <div className="container-site">
+          <div className="overflow-hidden bg-[#202020] px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-[88px]">
+            <div className="flex flex-col items-center gap-10 text-white lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+              <div className="flex w-full flex-col gap-4 lg:max-w-[542px] lg:flex-1">
+                <h2 className="heading-display">The Voices of Scale</h2>
+                <p className="text-lg leading-[1.41]">
+                  &quot;95% of new solutions fail to scale. 95% of development programmes do not
+                  succeed beyond pilot. 95% of AI projects do not deliver business value. The
+                  question is no longer why innovations fail... it is what it will take to make
+                  them succeed in different markets, institutions and ecosystems.&quot;
+                  <br />
+                  <span className="font-bold">Source: MIT.Devex</span>
+                </p>
+              </div>
+              <RotatingGlobe className="w-full max-w-[320px] sm:max-w-[400px] lg:w-[469px] lg:max-w-none lg:shrink-0" />
+            </div>
           </div>
         </div>
       </section>
