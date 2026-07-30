@@ -11,29 +11,43 @@ type TeamMember = {
   name: string;
   role: string;
   img: string;
+  /** Square cards crop tall portraits, so anchor the crop near the head. */
+  position?: string;
+  /** Very tall portraits are fitted whole, as in the design. */
+  contain?: boolean;
 };
 
 const seniorAdvisors: TeamMember[] = [
   { name: "Ade O. Ade", role: "Strategy, Innovation & Transformation.", img: "/images/team-ade.png" },
-  { name: "Dr Victor Ugo", role: "Programmes & Development.", img: "/images/team-victor.png" },
-  { name: "Gloria Momoh", role: "Partnerships & Private Sector.", img: "/images/team-gloria.jpg" },
+  { name: "Dr Victor Ugo", role: "Programmes & Development.", img: "/images/Dr%20Victor%20Ugo.png" },
+  {
+    name: "Gloria Momoh",
+    role: "Partnerships & Private Sector.",
+    img: "/images/team-gloria.jpg",
+    contain: true,
+  },
 ];
 
 const consultants: TeamMember[] = [
-  { name: "Bisi Adekola", role: "Women and Creatives.", img: "/images/team-bisi.png" },
+  { name: "Bisi Adekola", role: "Women and Creatives.", img: "/images/Bisi%20Adekola.png" },
   { name: "David Ahiante", role: "Policy, Youth & Engagement.", img: "/images/team-david.png" },
   { name: "Eva Okpallannuozo", role: "Talent Transformation.", img: "/images/team-eva.png" },
-  { name: "Obaloluwa Ajiboye", role: "Technology, Innovation & Ecosystems.", img: "/images/team-obaloluwa.png" },
+  { name: "Obaloluwa Ajiboye", role: "Technology, Innovation & Ecosystems.", img: "/images/Obaloluwa%20Ajiboye.png" },
 ];
 
 function TeamCard({ member }: { member: TeamMember }) {
   return (
-    <div className="relative aspect-square w-full overflow-hidden bg-[#dedede]">
+    <div
+      className={`relative aspect-square w-full overflow-hidden ${
+        member.contain ? "bg-[#ebebe9]" : "bg-[#dedede]"
+      }`}
+    >
       <Image
         src={member.img}
         alt={member.name}
         fill
-        className="object-cover"
+        className={member.contain ? "object-contain" : "object-cover"}
+        style={member.position ? { objectPosition: member.position } : undefined}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 310px"
       />
       <div className="absolute inset-x-2 bottom-2 flex flex-col gap-1 bg-white p-2">

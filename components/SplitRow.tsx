@@ -6,9 +6,10 @@ type SplitRowProps = {
   img: string;
   alt: string;
   reverse?: boolean;
+  href?: string;
 };
 
-export default function SplitRow({ title, body, img, alt, reverse }: SplitRowProps) {
+export default function SplitRow({ title, body, img, alt, reverse, href = "#" }: SplitRowProps) {
   return (
     <div
       className={`flex flex-col gap-6 lg:items-center ${reverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
@@ -27,7 +28,7 @@ export default function SplitRow({ title, body, img, alt, reverse }: SplitRowPro
           <h3 className="heading-card">{title}</h3>
           <p className="text-base leading-[1.41]">{body}</p>
         </div>
-        <a href="#" className="btn-yellow h-14">
+        <a href={href} className="btn-yellow h-14">
           Explore more
           <Image src="/images/icon-arrow-right.svg" alt="" width={20} height={20} />
         </a>

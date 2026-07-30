@@ -27,6 +27,16 @@ body {
   @apply font-serif font-semibold text-[28px] leading-[1.41] md:text-[40px];
 }
 
+/* 64px section heading used across the Innovate2scale page */
+.heading-section {
+  @apply font-serif font-medium text-[clamp(2rem,5vw,4rem)] leading-[1.41];
+}
+
+/* Outlined pill label that sits above each section heading */
+.badge-pill {
+  @apply inline-flex items-center justify-center gap-2 rounded-[60px] border-2 border-navy px-8 py-2.5 text-base font-medium text-navy;
+}
+
 /* Liquid hover: a navy "liquid" (an oversized rotating rounded square) rises from
    below the button; its uneven edge sweeping across reads as a liquid surface. */
 .btn-yellow {
@@ -69,6 +79,204 @@ body {
   .btn-yellow::before,
   .btn-yellow img {
     transition: none;
+  }
+}
+
+/* Carousels in the design have no visible scrollbar */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sticky offsets below the navbar (72px mobile / 88px from md up) */
+:root {
+  --nav-h: 72px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-h: 88px;
+  }
+}
+
+/* ---------- Scroll-driven text fill (home "Innovation." heading) ----------
+   Each word carries its own `--fill` stop, so the gold sweeps across its
+   letters. Both gradient stops sit at the same position: a softened band would
+   bleed gold into the start of every word while it is still at 0%. Unfilled
+   text is grey at 50% opacity, filled text is solid gold. Falls back to the
+   grey where background-clip: text is missing, rather than leaving transparent
+   (invisible) text. */
+.fill-word {
+  color: rgba(125, 125, 125, 0.5);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .fill-word {
+    background-image: linear-gradient(
+      90deg,
+      #e3bb00 var(--fill, 0%),
+      rgba(125, 125, 125, 0.5) var(--fill, 0%)
+    );
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* ---------- Intersection reveal (Purpose cards) ---------- */
+.reveal {
+  opacity: 0;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.7s ease;
+}
+
+.reveal-left {
+  transform: translateX(-72px);
+}
+
+.reveal-right {
+  transform: translateX(72px);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- Shared sticky scroll-scrub shell ---------- */
+.scrub-sticky {
+  position: sticky;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Programmes: horizontal scrub ---------- */
+.programmes-window {
+  width: min(866px, calc(100vw - 56px));
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.programmes-track {
+  display: flex;
+  will-change: transform;
+}
+
+.programmes-slide {
+  flex: 0 0 100%;
+}
+
+.programme-oval {
+  aspect-ratio: 866 / 589;
+  border-radius: 370px;
+}
+
+.programme-caption {
+  bottom: 6%;
+  width: 69%;
+  border-radius: 120px;
+}
+
+@media (max-width: 767px) {
+  .programme-oval {
+    height: 280px;
+    aspect-ratio: auto;
+    /* squashed oval so the shorter mobile slide still reads as a pill */
+    border-radius: 50% / 40%;
+  }
+
+  .programme-caption {
+    bottom: 14%;
+    width: 84%;
+    border-radius: 60px;
+    padding: 12px 18px;
+    gap: 6px;
+  }
+
+  .programme-caption-title {
+    font-size: 15px;
+  }
+
+  .programme-caption-list {
+    font-size: 11px;
+    padding-left: 18px;
+  }
+}
+
+/* ---------- Solutions: vertical scrub ---------- */
+.solutions-rail {
+  display: flex;
+  flex-direction: column;
+}
+
+.solutions-window {
+  width: 100%;
+  max-width: 866px;
+  overflow: hidden;
+}
+
+.solutions-track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+/* Height comes from the inline per-panel value: a `100%` flex-basis would
+   resolve against the track's auto height and collapse to content size. */
+.solutions-panel {
+  flex: 0 0 auto;
+}
+
+.solutions-panel-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 100%;
+}
+
+@media (max-width: 1239px) {
+  /* Rail is desktop-only; panels stack so the media sits under the copy */
+  .solutions-rail {
+    display: none;
+  }
+
+  .solutions-panel-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .solutions-media {
+    height: 200px;
+    width: 100%;
+    aspect-ratio: auto;
+    border-radius: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .programmes-track,
+  .solutions-track {
+    will-change: auto;
   }
 }
 

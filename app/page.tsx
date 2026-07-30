@@ -1,5 +1,6 @@
 import Image from "next/image";
 import RotatingGlobe from "@/components/RotatingGlobe";
+import ScrollFillHeading from "@/components/ScrollFillHeading";
 import SplitRow from "@/components/SplitRow";
 
 const marqueeImages = [
@@ -42,16 +43,19 @@ const services = [
     title: "Consulting Services",
     body: "Strategy-driven advisory services for growth and scale excellence. International Development, Partnership and Ecosystems, Innovation Management, HR and Capacity Building, Delivery and Implementation, Coaching and Mentoring.",
     img: "/images/service-consulting.jpg",
+    href: "https://innovate2scaleplatform.com/consulting",
   },
   {
     title: "Programme Services",
     body: "Transformative programmes developing individuals, leaders, entrepreneurs, and organizations. Frontiers for Innovation, Food for Resilience, Foundations for Governance, Financing for Access, Futures for Livelihoods, Facilities for Wellbeing.",
     img: "/images/service-programme.jpg",
+    href: "https://innovate2scaleplatform.com/programmes",
   },
   {
     title: "Solution Services",
     body: "Innovative solutions designed for lasting impact. Innovate2Scale Lab, Innovate2Scale Toolkit, Innovate2Scale Academy, Innovate2Scale Insights, Innovate2Scale Studio, Innovate2Scale Summit.",
     img: "/images/service-solution.jpg",
+    href: "https://innovate2scaleplatform.com/solutions",
   },
 ];
 
@@ -60,16 +64,19 @@ const initiatives = [
     title: "Innovate2Scale Lab",
     body: "A space where bold solutions scale with an ecosystem lens powered by the innovate2scale platform with a focus on harnessing the digital economy, system innovations and partnerships.",
     img: "/images/initiative-lab.jpg",
+    href: "https://innovate2scaleplatform.com/initiatives/lab",
   },
   {
     title: "KirAkira Africa Collective",
     body: "A suite of solutions around higher education, policy instruments and innovation with focus on children and young people to build a safe and secure future for Africa.",
     img: "/images/initiative-kirakira.jpg",
+    href: "https://innovate2scaleplatform.com/initiatives/kirakira",
   },
   {
     title: "We-Scale",
     body: "Shapes pathways for improving access to quality jobs, financing and living through inclusive opportunities and economy by harnessing the power of creativity and innovation.",
     img: "/images/initiative-wescale.jpg",
+    href: "https://innovate2scaleplatform.com/initiatives/we-scale",
   },
 ];
 
@@ -83,7 +90,8 @@ export default function Home() {
         <div className="container-site flex flex-col items-start gap-6">
           <div className="flex flex-col gap-4">
             <h1 className="heading-display">
-              Scaling Impact <span className="font-serif italic text-muted">Together</span>
+              <span className="text-black">Scaling</span>{" "}
+              <span className="text-[#e3bb00]">Innovation Together</span>
             </h1>
             <p className="max-w-[644px] text-lg leading-[1.41]">
               At Ade Adeks Global Consulting, we drive growth from early-stage ideas to
@@ -91,7 +99,7 @@ export default function Home() {
               the &quot;missing middle&quot; to help businesses scale and succeed.
             </p>
           </div>
-          <a href="#" className="btn-yellow h-14">
+          <a href="https://innovate2scaleplatform.com/" className="btn-yellow h-14">
             Check Out Innovate2scale
             <Image src="/images/icon-link.svg" alt="" width={20} height={20} />
           </a>
@@ -119,16 +127,7 @@ export default function Home() {
       {/* Innovation / Vision / Mission / Values */}
       <section className="bg-white py-16 lg:py-[104px]">
         <div className="container-site flex flex-col gap-16">
-          <h2 className="heading-display">
-            Innovation.
-            <br />
-            International{" "}
-            <span className="font-serif italic text-muted">Development</span>
-            <span className="text-muted">.</span>
-            <br />
-            Impact <span className="font-serif italic text-muted">Delivery</span>
-            <span className="text-muted">.</span>
-          </h2>
+          <ScrollFillHeading />
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-6">
             {valueCards.map((card) => (
               <div
