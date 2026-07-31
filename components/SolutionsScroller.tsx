@@ -44,6 +44,7 @@ const solutions = [
 ];
 
 const DESKTOP_WINDOW_HEIGHT = 427;
+const MOBILE_WINDOW_HEIGHT = 395;
 
 export default function SolutionsScroller() {
   const zoneRef = useRef<HTMLDivElement>(null);
@@ -52,13 +53,13 @@ export default function SolutionsScroller() {
   const slidePos = useScrollScrub(solutions.length, zoneRef);
   const travel = scrubTravel(solutions.length);
 
-  // Panel heights vary once the layout stacks, so below 1240px the clipping
-  // window is sized to the viewport (minus navbar and breathing room) to stop
-  // the active panel running off screen.
+  // Below 1240px the panel stacks, so the clipping window becomes a compact
+  // card rather than filling the screen — but never taller than the space
+  // left under the navbar, so the active panel can't run off-screen.
   useEffect(() => {
     const measure = () => {
       if (window.innerWidth < 1240) {
-        setWindowHeight(Math.max(360, window.innerHeight - navHeight() - 48));
+        setWindowHeight(Math.min(MOBILE_WINDOW_HEIGHT, window.innerHeight - navHeight() - 40));
       } else {
         setWindowHeight(DESKTOP_WINDOW_HEIGHT);
       }

@@ -91,7 +91,7 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <h1 className="heading-display">
               <span className="text-black">Scaling</span>{" "}
-              <span className="text-[#e3bb00]">Innovation Together</span>
+              <span className="text-[#e3bb00]">Future Together</span>
             </h1>
             <p className="max-w-[644px] text-lg leading-[1.41]">
               At Ade Adeks Global Consulting, we drive growth from early-stage ideas to
@@ -182,7 +182,7 @@ export default function Home() {
           <div className="overflow-hidden bg-[#202020] px-6 py-12 sm:px-10 sm:py-16 lg:px-16 lg:py-[88px]">
             <div className="flex flex-col items-center gap-10 text-white lg:flex-row lg:items-center lg:justify-between lg:gap-8">
               <div className="flex w-full flex-col gap-4 lg:max-w-[542px] lg:flex-1">
-                <h2 className="heading-display">The Voices of Scale</h2>
+                <h2 className="heading-display">The Future of Scale</h2>
                 <p className="text-lg leading-[1.41]">
                   &quot;95% of new solutions fail to scale. 95% of development programmes do not
                   succeed beyond pilot. 95% of AI projects do not deliver business value. The

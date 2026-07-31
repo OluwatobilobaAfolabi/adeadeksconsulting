@@ -97,7 +97,7 @@ export default function ProgrammesCarousel() {
             {/* Gold ring echoing the oval outline behind the slide in the design */}
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-1/2 hidden h-[calc(100%+40px)] w-[calc(min(866px,100vw-56px)+60px)] -translate-x-1/2 -translate-y-1/2 rounded-[430px] border border-[#f2ad00] lg:block"
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[calc(100%+22px)] w-[calc(min(866px,100vw-56px)+30px)] -translate-x-1/2 -translate-y-1/2 rounded-[280px] border border-[#f2ad00] lg:h-[calc(100%+40px)] lg:w-[calc(min(866px,100vw-56px)+60px)] lg:rounded-[430px]"
             />
 
             <div ref={windowRef} className="programmes-window">
@@ -106,7 +106,9 @@ export default function ProgrammesCarousel() {
                 style={{ transform: `translateX(${-slidePos * stepWidth}px)` }}
               >
                 {programmes.map((prog, i) => (
-                  <div key={prog.title} className="programmes-slide">
+                  <div key={prog.title} className="programmes-slide relative">
+                    {/* Only the image is clipped to the oval — the caption is a
+                        sibling so it can hang past the curve without being cut. */}
                     <div className="programme-oval relative w-full overflow-hidden bg-[#d9d9d9]">
                       <Image
                         src={prog.img}
@@ -116,17 +118,16 @@ export default function ProgrammesCarousel() {
                         sizes="(max-width: 1024px) 100vw, 866px"
                         priority={i === 0}
                       />
-                      {/* White pill card sits over the lower part of the oval */}
-                      <div className="programme-caption absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 bg-white px-6 py-5 text-center sm:px-10 lg:px-16 lg:py-8">
-                        <p className="programme-caption-title font-serif text-base font-semibold leading-[1.41] sm:text-xl lg:text-2xl">
-                          {prog.title}
-                        </p>
-                        <ul className="programme-caption-list list-disc pl-6 text-left text-[11px] leading-[1.41] sm:text-sm lg:text-base">
-                          {prog.points.map((point) => (
-                            <li key={point}>{point}</li>
-                          ))}
-                        </ul>
-                      </div>
+                    </div>
+                    <div className="programme-caption absolute left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 bg-white px-6 py-5 text-center sm:px-10 lg:px-16 lg:py-8">
+                      <p className="programme-caption-title font-serif text-base font-semibold leading-[1.41] sm:text-xl lg:text-2xl">
+                        {prog.title}
+                      </p>
+                      <ul className="programme-caption-list list-disc pl-6 text-left text-[11px] leading-[1.41] sm:text-sm lg:text-base">
+                        {prog.points.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 ))}

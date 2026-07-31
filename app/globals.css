@@ -161,10 +161,13 @@ body {
 }
 
 /* ---------- Programmes: horizontal scrub ---------- */
+/* Clip sideways only: `hidden` on one axis forces a scroll container on the
+   other, which would cut the caption where it hangs below the oval. */
 .programmes-window {
   width: min(866px, calc(100vw - 56px));
   margin-inline: auto;
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .programmes-track {
@@ -195,11 +198,13 @@ body {
     border-radius: 50% / 40%;
   }
 
+  /* Sits low on the oval and overhangs it, as in the reference build */
   .programme-caption {
-    bottom: 14%;
-    width: 84%;
-    border-radius: 60px;
-    padding: 12px 18px;
+    top: 60%;
+    bottom: auto;
+    width: 85%;
+    border-radius: 36px;
+    padding: 18px 20px;
     gap: 6px;
   }
 
