@@ -51,12 +51,7 @@ function TeamCard({ member }: { member: TeamMember }) {
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 310px"
       />
       <div className="absolute inset-x-2 bottom-2 flex flex-col gap-1 bg-white p-2">
-        <div className="flex items-start justify-between gap-2">
-          <p className="font-serif text-lg font-semibold leading-[1.41]">{member.name}</p>
-          <a href="#" aria-label={`${member.name} on LinkedIn`} className="shrink-0">
-            <Image src="/images/icon-linkedin-box.svg" alt="" width={24} height={24} />
-          </a>
-        </div>
+        <p className="font-serif text-lg font-semibold leading-[1.41]">{member.name}</p>
         <p className="text-sm leading-[1.41]">{member.role}</p>
       </div>
     </div>
@@ -138,7 +133,13 @@ export default function About() {
             <div className="absolute inset-x-4 bottom-4 flex flex-col gap-2 bg-white p-6">
               <div className="flex items-start justify-between gap-2">
                 <p className="font-serif text-2xl font-semibold leading-[1.41]">Ade O. Ade</p>
-                <a href="#" aria-label="Ade O. Ade on LinkedIn" className="shrink-0">
+                <a
+                  href="https://www.linkedin.com/in/aadekola/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ade O. Ade on LinkedIn"
+                  className="shrink-0"
+                >
                   <Image src="/images/icon-linkedin-box.svg" alt="" width={32} height={32} />
                 </a>
               </div>

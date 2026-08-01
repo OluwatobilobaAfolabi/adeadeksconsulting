@@ -91,7 +91,7 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <h1 className="heading-display">
               <span className="text-black">Scaling</span>{" "}
-              <span className="text-[#e3bb00]">Future Together</span>
+              <span className="text-[#e3bb00]">Futures</span>
             </h1>
             <p className="max-w-[644px] text-lg leading-[1.41]">
               At Ade Adeks Global Consulting, we drive growth from early-stage ideas to
