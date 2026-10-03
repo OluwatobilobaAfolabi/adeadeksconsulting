@@ -28,13 +28,6 @@ const seniorAdvisors: TeamMember[] = [
   },
 ];
 
-const consultants: TeamMember[] = [
-  { name: "Bisi Adekola", role: "Women and Creatives.", img: "/images/Bisi%20Adekola.png" },
-  { name: "David Ahiante", role: "Policy, Youth & Engagement.", img: "/images/team-david.png" },
-  { name: "Eva Okpallannuozo", role: "Talent Transformation.", img: "/images/team-eva.png" },
-  { name: "Obaloluwa Ajiboye", role: "Technology, Innovation & Ecosystems.", img: "/images/Obaloluwa%20Ajiboye.png" },
-];
-
 function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div
@@ -171,24 +164,6 @@ export default function About() {
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {seniorAdvisors.map((member) => (
-                <TeamCard key={member.name} member={member} />
-              ))}
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-6">
-            <div className="flex max-w-[644px] flex-col gap-2">
-              <h3 className="heading-card">Consultants</h3>
-              <p className="text-base leading-[1.41]">
-                Our Consultants work closely with clients to develop practical, customised
-                solutions that address their unique business needs. Combining technical
-                expertise, analytical thinking, and hands-on experience, they deliver
-                actionable strategies, improve operational performance, and support successful
-                advisory, innovation and delivery.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {consultants.map((member) => (
                 <TeamCard key={member.name} member={member} />
               ))}
             </div>
