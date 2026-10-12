@@ -11,6 +11,21 @@ const marqueeImages = [
   "/images/hero-5.jpg",
 ];
 
+// Intrinsic sizes, plus the height each logo renders at. The stacked Innovate
+// Strategy mark needs more height than the single-line wordmarks to read at a
+// comparable size, so the row is matched by optical weight rather than height.
+const partners = [
+  {
+    name: "Innovate Strategy",
+    src: "/images/partner-innovate-strategy.png",
+    w: 1325,
+    h: 858,
+    size: "h-16",
+  },
+  { name: "Synergya", src: "/images/partner-synergya.png", w: 500, h: 170, size: "h-12" },
+  { name: "Volte Health Systems", src: "/images/partner-volte.png", w: 160, h: 50, size: "h-12" },
+];
+
 const valueCards = [
   {
     title: "Our Vision",
@@ -124,8 +139,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Our Partners */}
+      <section className="bg-white pt-16 pb-8 lg:pt-20 lg:pb-8">
+        <div className="container-site flex flex-col items-center gap-10">
+          <h2 className="heading-card text-center">Our Partners</h2>
+          {/* Ruled grid: the container draws the top/left edges and each cell
+              its right/bottom, so shared edges stay a single hairline. */}
+          <div className="grid w-full grid-cols-1 border-l border-t border-[#e5e5e5] sm:grid-cols-3">
+            {partners.map((partner) => (
+              <div
+                key={partner.name}
+                className="flex items-center justify-center border-b border-r border-[#e5e5e5] px-8 py-14 transition-colors duration-300 hover:bg-[#f5f5f5]"
+              >
+                <Image
+                  src={partner.src}
+                  alt={partner.name}
+                  width={partner.w}
+                  height={partner.h}
+                  className={`${partner.size} w-auto object-contain`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Innovation / Vision / Mission / Values */}
-      <section className="bg-white py-16 lg:py-[104px]">
+      <section className="bg-white pt-8 pb-16 lg:pt-8 lg:pb-[104px]">
         <div className="container-site flex flex-col gap-16">
           <ScrollFillHeading />
           <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-6">

@@ -15,10 +15,12 @@ type TeamMember = {
   position?: string;
   /** Very tall portraits are fitted whole, as in the design. */
   contain?: boolean;
+  /** Backdrop for cut-out portraits, which have no background of their own. */
+  bg?: string;
 };
 
 const seniorAdvisors: TeamMember[] = [
-  { name: "Ade O. Ade", role: "Strategy, Innovation & Transformation.", img: "/images/team-ade.png" },
+  { name: "Ade O. Ade", role: "Senior Advisor, Delivery and Scale", img: "/images/team-ade.png" },
   { name: "Dr Victor Ugo", role: "Programmes & Development.", img: "/images/Dr%20Victor%20Ugo.png" },
   {
     name: "Gloria Momoh",
@@ -26,14 +28,19 @@ const seniorAdvisors: TeamMember[] = [
     img: "/images/team-gloria.jpg",
     contain: true,
   },
+  {
+    name: "Dr Sebastian Vetter",
+    role: "Innovation Strategy and Design",
+    img: "/images/team-sebastian.webp",
+    bg: "#f5f5f5",
+  },
 ];
 
 function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div
-      className={`relative aspect-square w-full overflow-hidden ${
-        member.contain ? "bg-[#ebebe9]" : "bg-[#dedede]"
-      }`}
+      className="relative aspect-square w-full overflow-hidden"
+      style={{ backgroundColor: member.bg ?? (member.contain ? "#ebebe9" : "#dedede") }}
     >
       <Image
         src={member.img}
