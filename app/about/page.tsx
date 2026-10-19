@@ -20,7 +20,7 @@ type TeamMember = {
 };
 
 const seniorAdvisors: TeamMember[] = [
-  { name: "Ade O. Ade", role: "Senior Advisor, Delivery and Scale", img: "/images/team-ade.png" },
+  { name: "Ade O. Ade", role: "Delivery and Scale", img: "/images/team-ade.png" },
   { name: "Dr Victor Ugo", role: "Programmes & Development.", img: "/images/Dr%20Victor%20Ugo.png" },
   {
     name: "Gloria Momoh",
@@ -31,8 +31,8 @@ const seniorAdvisors: TeamMember[] = [
   {
     name: "Dr Sebastian Vetter",
     role: "Innovation Strategy and Design",
-    img: "/images/team-sebastian.webp",
-    bg: "#f5f5f5",
+    img: "/images/team-sebastian-2.webp",
+    position: "50% 12%",
   },
 ];
 
